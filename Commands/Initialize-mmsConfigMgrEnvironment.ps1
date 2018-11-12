@@ -21,12 +21,14 @@ function Initialize-mmsConfigMgrEnvironment {
     if( -not ($Script:ConfigMgrDatabaseServer -and
                 $Script:ConfigMgrDatabaseName -and
                 $Script:ConfigMgrDatabaseConnection -and
-                $Script:ConfigMgrSiteCode)){
+                $Script:ConfigMgrSiteCode -and
+                $Script:ConfigMgrSMSProvider)){
             $config = Get-Content -Path "$PSScriptRoot\..\config.json" -Raw
             $ConfigMgrConfig = ConvertFrom-Json -InputObject $config 
             $Script:ConfigMgrDatabaseServer = $ConfigMgrConfig.DatabaseServer
             $Script:ConfigMgrDatabaseName = $ConfigMgrConfig.DatabaseName
             $Script:ConfigMgrDatabaseConnection = New-mmsSqlConnection -ServerName $ConfigMgrConfig.DatabaseServer -DatabaseName $ConfigMgrConfig.DatabaseName
             $Script:ConfigMgrSiteCode = $ConfigMgrConfig.SiteCode
+            $Script:ConfigMgrSMSProvider = $ConfigMgrConfig.SMSProvider
         }
 }

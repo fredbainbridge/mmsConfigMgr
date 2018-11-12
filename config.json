@@ -1,5 +1,6 @@
 {
     "DatabaseServer": "CM1",
     "DatabaseName": "ConfigMgr_CHQ",
-    "SiteCode": "CHQ"
+    "SiteCode": "CHQ",
+    "SmsProvider": "CM1"
 }
