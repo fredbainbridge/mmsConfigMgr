@@ -13,7 +13,7 @@ function Get-mmsConfigMgrClientStatus {
     General notes
     #>
     [CmdletBinding()]
-    [OutputType([Microsoft.Management.Infrastructure.CimMethodResult])]
+    [OutputType([string])]
     param (
         [Parameter(Mandatory=$true)]
         [string]$ResourceID
