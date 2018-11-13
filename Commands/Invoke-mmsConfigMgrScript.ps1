@@ -41,7 +41,13 @@ function Invoke-mmsConfigMgrScript {
             return
         }
         if(($null -ne $CimQueryResults) -and (@($CimQueryResults).Count -eq 1)){
-            $ParamXML = "<ScriptContent ScriptGuid='{0}'><ScriptVersion>{1}</ScriptVersion><ScriptType>{2}</ScriptType><ScriptHash ScriptHashAlg='SHA256'>{3}</ScriptHash><ScriptParameters></ScriptParameters><ParameterGroupHash ParameterHashAlg='SHA256'>{4}</ParameterGroupHash></ScriptContent>" -f (
+            $ParamXML = "<ScriptContent ScriptGuid='{0}'>
+                            <ScriptVersion>{1}</ScriptVersion>
+                            <ScriptType>{2}</ScriptType>
+                            <ScriptHash ScriptHashAlg='SHA256'>{3}</ScriptHash>
+                            <ScriptParameters></ScriptParameters>
+                            <ParameterGroupHash ParameterHashAlg='SHA256'>{4}</ParameterGroupHash>
+                        </ScriptContent>" -f (
                 $CimQueryResults.ScriptGuid,
                 $CimQueryResults.ScriptVersion,
                 $CimQueryResults.ScriptType,
