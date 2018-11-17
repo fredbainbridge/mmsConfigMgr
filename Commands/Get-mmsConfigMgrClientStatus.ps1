@@ -33,7 +33,7 @@ function Get-mmsConfigMgrClientStatus {
         catch {
             Write-Warning "Unable to connect to the SMS Provider."
         }
-        if(($null -ne $CimQueryResults) -and ($CimQueryResults.Count -eq 1)) {
+        if(($null -ne $CimQueryResults) -and (@($CimQueryResults).Count -eq 1)) {
             switch ($CimQueryResults.OnlineStatus) {
                 0 { $Status = "Offline" }
                 1 { $Status = "Online" }
