@@ -45,7 +45,7 @@ function New-mmsConfigMgrDirectMembershipRule {
             return
         }
         
-        $NewRule = New-CimInstance -Namespace "root\SMS\site_CHQ" -ClassName SMS_CollectionRuleDirect -Property @{
+        $NewRule = New-CimInstance -Namespace "root\SMS\site_$($Script:ConfigMgrSiteCode)" -ClassName SMS_CollectionRuleDirect -Property @{
             RuleName = "$ResourceID Direct Rule";
             ResourceClassName = "SMS_R_System";
             ResourceID = [UINT32]$ResourceID;

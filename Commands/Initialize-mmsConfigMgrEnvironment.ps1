@@ -30,5 +30,14 @@ function Initialize-mmsConfigMgrEnvironment {
             $Script:ConfigMgrDatabaseConnection = New-mmsSqlConnection -ServerName $ConfigMgrConfig.DatabaseServer -DatabaseName $ConfigMgrConfig.DatabaseName
             $Script:ConfigMgrSiteCode = $ConfigMgrConfig.SiteCode
             $Script:ConfigMgrSMSProvider = $ConfigMgrConfig.SMSProvider
+            $Script:ConfigMgrCmdletsPath = "$($ENV:SMS_ADMIN_UI_PATH)\..\ConfigurationManager.psd1"
+            
+            if(Test-Path -Path "$Script:ConfigMgrCmdletsPath") {
+                $Script:ConfigMgrCmdletsAvailable = $true
+            }
+            else {
+                $Script:ConfigMgrCmdletsAvailable = $false
+                $Script:ConfigMgrCmdletsPath = $null
+            }
         }
 }
