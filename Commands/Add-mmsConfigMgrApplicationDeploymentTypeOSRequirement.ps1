@@ -3,30 +3,20 @@
     .SYNOPSIS
     Add an OS requirement to all deployment types for an application.
     .DESCRIPTION
-    This is especially useful if you have a lot of applications that have existing OS requirements attached to deployment
-    types and you want to add another.  i.e. Windows 10 just came.  There must already be an OS requirement for the deployment 
-    type for this to work.
-
-    This will attempt to add the OS requirement only if it finds an existing OS requirement.
+    This is especially useful if you have a lot of applications you want to certify for Windows 10 (for example)
+    It will create a new Operating System requirement if one does not exist.
     This will attempt to add the OS requirement to each deployment type it finds.
 
     .EXAMPLE
-    Add-FBApplicationDTRequirement -appName "Microsoft Office 2016 x86" -siteCode "lab" -siteserver "cm01.cm.lab" -Requirement "All Windows 10 (64-bit)"
-    .EXAMPLE
-    $appNames | Add-FBApplicationDTRequirement -siteCode "lab" -siteserver "cm01.cm.lab" -Requirement "All Windows 10 (64-bit)"
-    .PARAMETER appName
-    This is the name of the configmgr application that has the deployment types that you want to add the OS requirement to. This accepts input from pipeline.
-    .PARAMETER siteCode
-    This the ConfigMgr site code you are working with. Defaults to LAB
-    .PARAMETER siteServer
-    This the site server you are going to working with.  WMI calls are made to this server.  It is most likely your primary site server.
-    .NOTES
-    The NameValidateSet.txt must exist in the working directory of the script.
-    It can be found here https://github.com/fredbainbridge/Add-FBApplicationDTDeploymentType
-    This needs to be run on a system that has the ConfigMgr console installed and it assumes it is installed here - 
-    'C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\ConfigurationManager.psd1'
-    Modify the begin statement to change this.
+    Add-mmsConfigMgrApplicationDeploymentTypeOSRequirement -ApplicationName '7zip' -Requirement 'All Windows 10 (64-bit)'
 
+    .PARAMETER ApplicationName
+    This is the name of the configmgr application that has the deployment types that you want to add the OS requirement to. This accepts input from pipeline.
+    
+    .NOTES
+    Add allowed operating systems to the config.json in the root of the module.
+    
+    This will hopefully be deprecated soon enough.
     https://configurationmanager.uservoice.com/forums/300492-ideas/suggestions/8396517-add-a-powershell-possibility-to-add-requirements-t
 
     #>
