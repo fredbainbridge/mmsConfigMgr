@@ -28,17 +28,17 @@ function New-mmsConfigMgrDirectMembershipRule {
         $Query = "Select Name0 from v_r_system where ResourceID = $ResourceID"
         $results = Invoke-mmsSqlCommand -Connection $Script:ConfigMgrDatabaseConnection -Query $Query -ReturnResults
         if($null -eq $results) {
-            write-warning "ResourceID not found in ConfigMgr."
+            Write-Warning "ResourceID not found in ConfigMgr."
             return
         }
 
         $CIMSession = New-CimSession -ComputerName $Script:ConfigMgrSMSProvider -ErrorAction Stop
         $CIMParams = @{
-            "NameSpace" = "root\SMS\site_CHQ";
+            "NameSpace" = "root\SMS\site_$($Script:ConfigMgrSiteCode)";
             "ClassName" = "SMS_Collection"
         }
         try {
-            [CimInstance]$CollectionCimQueryResults = Get-CimInstance -CimSession $CIMSession @CIMParams -Filter "CollectionID = 'CHQ00014' and CollectionType='2'"
+            [CimInstance]$CollectionCimQueryResults = Get-CimInstance -CimSession $CIMSession @CIMParams -Filter "CollectionID = '$CollectionID' and CollectionType='2'"
         }
         catch {
             Write-Warning "Unable to connect to the SMS Provider."

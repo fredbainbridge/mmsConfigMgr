@@ -1,7 +1,7 @@
 {
     "DatabaseServer": "CM1",
-    "DatabaseName": "ConfigMgr_CHQ",
-    "SiteCode": "CHQ",
+    "DatabaseName": "CM_LAB",
+    "SiteCode": "LAB",
     "SmsProvider": "CM1",
     "DeploymentTypeOperatingSystems": [
         {
